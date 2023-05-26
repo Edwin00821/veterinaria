@@ -1,0 +1,5 @@
+export { default as useColor } from './useColor'
+export { default as useEspecie } from './useEspecie'
+export { default as useRaza } from './useRaza'
+export { default as useSelect } from './useSelect'
+export { default as useSexo } from './useSexo'

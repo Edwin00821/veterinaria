@@ -1,0 +1,5 @@
+export * from './colorC'
+export * from './especieC'
+export * from './mascotaM'
+export * from './razaC'
+export * from './sexoC'
