@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { RolCService, VeterinariaMService } from '@/services'
 import { LoginSchema, signIn } from '@/libs'
 import { Input } from '@/components'
-import { useClientes, useUsuarios } from '../hooks'
+import { useClientes, useDuenoVet, useUsuarios } from '../hooks'
 import { toast } from 'react-toastify'
 
 import {
@@ -21,6 +21,7 @@ const LoginForm = () => {
 
   const { usuarios } = useUsuarios()
   const { clientes } = useClientes()
+  const { duenos } = useDuenoVet()
 
   const navigate = useNavigate()
 
@@ -47,6 +48,7 @@ const LoginForm = () => {
       ({ correo_usu, contrasena_usu }) =>
         correo_usu === email && contrasena_usu === password
     )[0]
+
     if (user.length !== 0) {
       toast.update(customId, {
         render: 'Datos validados correctamente',
@@ -54,32 +56,61 @@ const LoginForm = () => {
         isLoading: false,
         autoClose: 2000
       })
-      const client = clientes.filter(({ id_usu }) => id_usu === user.id_usu)[0]
-      const { rol } = await RolCService.searchById(user.id_rol)
-      const { veterinaria } = await VeterinariaMService.searchById(
-        client.id_vet
-      )
 
-      signIn('client', {
-        isLogged: true,
-        id_cli: client.id_cli,
-        nombre_cli: client.nombre_cli,
-        direccion_cli: client.direccion_cli,
-        telefono_cli: client.telefono_cli,
-        correo_cli: client.correo_cli,
-        user: {
-          correo_usu: user.correo_usu,
-          contrasena_usu: user.correo_usu,
-          rol,
-          create_at: user.create_at,
-          update_at: user.update_at
-        },
-        veterinaria,
-        create_at: client.create_at,
-        update_at: client.update_at
-      })
+      if (user.id_rol === 1) {
+        const dueno = duenos.filter(({ id_usu }) => id_usu === user.id_usu)[0]
+        const { rol } = await RolCService.searchById(user.id_rol)
+        const { veterinaria } = await VeterinariaMService.searchById(
+          dueno.id_vet
+        )
 
-      navigate('/myPets')
+        signIn('admin', {
+          isLogged: true,
+          id_duevet: dueno.id_duevet,
+          nombre_duevet: dueno.nombre_duevet,
+          user: {
+            correo_usu: user.correo_usu,
+            contrasena_usu: user.correo_usu,
+            rol,
+            create_at: user.create_at,
+            update_at: user.update_at
+          },
+          veterinaria,
+          create_at: dueno.create_at,
+          update_at: dueno.update_at
+        })
+      }
+
+      if (user.id_rol === 6) {
+        const client = clientes.filter(
+          ({ id_usu }) => id_usu === user.id_usu
+        )[0]
+        const { rol } = await RolCService.searchById(user.id_rol)
+        const { veterinaria } = await VeterinariaMService.searchById(
+          client.id_vet
+        )
+
+        signIn('client', {
+          isLogged: true,
+          id_cli: client.id_cli,
+          nombre_cli: client.nombre_cli,
+          direccion_cli: client.direccion_cli,
+          telefono_cli: client.telefono_cli,
+          correo_cli: client.correo_cli,
+          user: {
+            correo_usu: user.correo_usu,
+            contrasena_usu: user.correo_usu,
+            rol,
+            create_at: user.create_at,
+            update_at: user.update_at
+          },
+          veterinaria,
+          create_at: client.create_at,
+          update_at: client.update_at
+        })
+      }
+
+      navigate('/')
     } else {
       toast.update(customId, {
         render: 'Datos incorrectos',

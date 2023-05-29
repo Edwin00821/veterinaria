@@ -1,4 +1,5 @@
 export * from './clienteD'
+export * from './duenoVeterinariaD'
 export * from './rolC'
 export * from './usuarioM'
 export * from './veterinariaM'
