@@ -1,6 +1,6 @@
 import { CLOUDINARY_UPLOAD_PRESET } from '@/libs'
 
-const Logo = () => {
+const Logo = ({ color }) => {
   return (
     <img
       src={`${CLOUDINARY_UPLOAD_PRESET}/App/Logo.png`}

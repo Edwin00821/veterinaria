@@ -2,37 +2,35 @@ import { getSession } from '@/libs'
 import { createSlice } from '@reduxjs/toolkit'
 
 export const AdminEmptyState = {
-  isLogued: false,
-  num_empleado: '',
+  isLogged: false,
+  id_cli: 0,
+  nombre_cli: '',
+  direccion_cli: '',
+  telefono_cli: '',
+  correo_cli: '',
   user: {
-    correo_user: '',
-    img_user: '',
+    correo_usu: '',
+    contrasena_usu: '',
     rol: {
       id_rol: 0,
-      tipo_rol: '',
-      valida_rol: 1
+      nombre_rol: '',
+      create_at: '',
+      update_at: ''
     },
-    persona: {
-      id_per: 0,
-      nombre_per: '',
-      appat_per: '',
-      apmat_per: '',
-      fecha_de_nacimiento_per: '',
-      genero: {
-        id_gen: 0,
-        tipo_gen: '',
-        valida_gen: 1
-      },
-      inteligencia: {
-        id_int: 0,
-        tipo_int: '',
-        valida_int: 1
-      },
-      valida_per: 1
-    },
-    valida_user: 1
+    create_at: '',
+    update_at: ''
   },
-  valida_adm: 1
+  veterinaria: {
+    id_vet: 0,
+    nombre_vet: '',
+    direccion_vet: '',
+    telefono_vet: '',
+    correo_vet: '',
+    create_at: '',
+    update_at: ''
+  },
+  create_at: '',
+  update_at: ''
 }
 
 export const adminSlice = createSlice({

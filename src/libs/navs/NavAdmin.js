@@ -1,18 +1,18 @@
 export const NavAdmin = [
   {
-    href: '/#QuienesSomos',
-    name: '¿Quiénes Somos?'
+    href: '/dashboard',
+    name: 'Dashboard'
   },
   {
-    href: '/#Servicios',
-    name: 'Servicios'
+    href: '/libro',
+    name: 'Libro'
   },
   {
-    href: '/#Sucursales',
-    name: 'Sucursales'
+    href: '/pago-gastos-fijos',
+    name: 'Pago Gastos Fijos'
   },
   {
-    href: '/#Tienda',
-    name: 'Tienda'
+    href: '/inventario',
+    name: 'Inventario'
   }
 ]

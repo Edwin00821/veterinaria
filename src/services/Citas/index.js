@@ -1,5 +1,7 @@
 export * from './colorC'
 export * from './especieC'
+export * from './estadoExpedienteC'
+export * from './expedienteM'
 export * from './mascotaM'
 export * from './razaC'
 export * from './sexoC'

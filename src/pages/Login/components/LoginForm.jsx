@@ -43,7 +43,7 @@ const LoginForm = () => {
       draggable: true,
       progress: undefined
     })
-    const user = usuarios.filter(
+    const user = usuarios?.filter(
       ({ correo_usu, contrasena_usu }) =>
         correo_usu === email && contrasena_usu === password
     )[0]

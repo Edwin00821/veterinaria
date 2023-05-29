@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './redux'
 import { PublicRoutes, PrivateRoutes } from './libs'
@@ -24,6 +24,7 @@ import {
   ProfilePet,
   NextDates,
   // Contabilidad
+  AddProduct,
   AddServices,
   FixedCosts,
   SalePoint,
@@ -42,7 +43,7 @@ import { ToastContainer } from 'react-toastify'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           {/* Public Routs */}
           <Route element={<PublicGuard />}>
@@ -72,6 +73,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             {/* Contabilidad Routs */}
             <Route element={<AccountancyGuard />}>
               <Route
+                path={PrivateRoutes.ADD_PRODUCT}
+                element={<AddProduct />}
+              />
+              <Route
                 path={PrivateRoutes.FIXED_COSTS}
                 element={<FixedCosts />}
               />
@@ -100,7 +105,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
           <Route path='*' element={<FourtyFour />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
       <ToastContainer
         theme='light'
         position='top-right'

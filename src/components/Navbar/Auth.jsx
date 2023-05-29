@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 
 const Auth = () => {
   const cliente = useSelector((state) => state.client)
+  const admin = useSelector((state) => state.admin)
+
   return (
     <div className='flex w-full flex-col justify-between gap-7 p-10'>
       <h2 className='text-center text-4xl font-bold text-primary'>
@@ -16,7 +18,9 @@ const Auth = () => {
             className='h-full w-full'
           />
         </div>
-        <h3 className='text-xl font-semibold'>{cliente.nombre_cli}</h3>
+        <h3 className='text-xl font-semibold'>
+          {cliente.nombre_cli || admin.nombre_duevet}
+        </h3>
       </div>
     </div>
   )

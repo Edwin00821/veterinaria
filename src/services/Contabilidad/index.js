@@ -1,2 +1,6 @@
-export * from './product'
+export * from './animalproductoC'
+export * from './categoriaC'
+export * from './marcaC'
+export * from './periodoD'
+export * from './productoM'
 export * from './servicioC'

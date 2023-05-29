@@ -1,4 +1,3 @@
-import { LayoutUser } from '@/components'
 import { useParams } from 'react-router-dom'
 import { usePets } from './hooks'
 import { BASE_CLOUDINARY_URL, getAge } from '@/libs'
@@ -10,7 +9,7 @@ const ProfilePet = () => {
   console.log(pets)
 
   return (
-    <LayoutUser>
+    <>
       {pets === undefined ? (
         <h1>Loading...</h1>
       ) : pets ? (
@@ -46,7 +45,7 @@ const ProfilePet = () => {
       ) : (
         <h1>No encontramos tu mascota 😢</h1>
       )}
-    </LayoutUser>
+    </>
   )
 }
 

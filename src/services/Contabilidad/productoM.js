@@ -1,15 +1,15 @@
 import axios from 'axios'
 import { BASE_URL_API, axiosError, axiosSuccess, axiosConfig } from '@/libs'
 
-export const ProductService = {
+export const ProductoMService = {
   list: async () => {
     try {
-      const ResponseGen = await axios.get(
-        `${BASE_URL_API}/catalogo/animalProductoC`,
+      const ResProducto = await axios.get(
+        `${BASE_URL_API}/maestra/productoM`,
         axiosConfig
       )
 
-      return axiosSuccess(ResponseGen, 'ProductService.getAll')
+      return axiosSuccess(ResProducto, 'ProductService.getAll')
     } catch (error) {
       return axiosError(error, 'ProductService.getAll')
     }
@@ -18,7 +18,7 @@ export const ProductService = {
   searchById: async (id) => {
     try {
       const ResponseProduct = await axios.get(
-        `${BASE_URL_API}/catalogo/animalProductoC/${id}`
+        `${BASE_URL_API}/maestra/productoM/${id}`
       )
       return axiosSuccess(ResponseProduct, 'ProductService.getAll')
     } catch (error) {
@@ -28,9 +28,12 @@ export const ProductService = {
 
   create: async (Product) => {
     try {
-      const ResponseGen = await axios.post(`${BASE_URL_API}/Product`, Product)
+      const ResProducto = await axios.post(
+        `${BASE_URL_API}/maestra/productoM`,
+        Product
+      )
 
-      return axiosSuccess(ResponseGen, 'ProductService.create')
+      return axiosSuccess(ResProducto, 'ProductService.create')
     } catch (error) {
       return axiosError(error, 'ProductService')
     }
@@ -38,11 +41,11 @@ export const ProductService = {
 
   update: async (Product) => {
     try {
-      const ResponseGen = await axios.put(
-        `${BASE_URL_API}/catalogo/animalProductoC/`,
+      const ResProducto = await axios.put(
+        `${BASE_URL_API}/maestra/productoM/`,
         Product
       )
-      return axiosSuccess(ResponseGen, 'ProductService.update')
+      return axiosSuccess(ResProducto, 'ProductService.update')
     } catch (error) {
       return axiosError(error, 'ProductService')
     }

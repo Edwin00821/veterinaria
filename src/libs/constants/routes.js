@@ -14,10 +14,15 @@ export const PrivateRoutes = {
   NEXT_DATES: '/nextDates',
 
   // Contabilidad
+  ADD_PRODUCT: '/addProduct',
+  ADD_SERVICES: '/addServices',
+  BOOK: '/book',
   FIXED_COSTS: '/fixedCosts',
   INVENTARY: '/inventary',
+  NEW_LOT: '/newLot',
   SALE_POINT: '/salePoint',
-  ADD_SERVICES: '/addServices',
+  SERVICES: '/salePoint',
+  SUPPLIER: '/supplier',
 
   // Dashboard
   ACCOUNTANCY: '/accountancy',
